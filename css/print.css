@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+body.print div:not(.fancybox-container) {
+  display: none;
+}
+body.print .fancybox-inner, body.print .fancybox-stage, body.print .fancybox-stage * {
+  display: block !important;
+}
+body.print .fancybox-stage .fancybox-content {
+  width: 100% !important;
+  position: static !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+body.print img {
+  width: 100% !important;
+  height: auto !important;
+}
