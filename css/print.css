@@ -1,18 +1,28 @@
 @charset "utf-8";
-
-body.print div:not(.fancybox-container) {
+body.print div:not(#print) {
   display: none;
 }
-body.print .fancybox-inner, body.print .fancybox-stage, body.print .fancybox-stage * {
-  display: block !important;
-}
-body.print .fancybox-stage .fancybox-content {
+
+div#print {
+  display: block;
   width: 100% !important;
+  height: 100% !important;
+}
+
+div#print>img {
+  width: 100% !important;
+  height: auto !important;
   position: static !important;
   margin: 0 !important;
   transform: none !important;
+
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  max-height: 100% !important;
+  margin: 0 auto !important;
 }
-body.print img {
-  width: 100% !important;
-  height: auto !important;
+
+div#print[disabled] {
+  display: none;
 }

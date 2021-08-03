@@ -214,11 +214,13 @@
         "</button>",
 
       // Arrows
-      arrowLeft: '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
+      arrowRight:
+        '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_right" title="{{PREV}}">' +
         '<div><p>前ページ</p></div>' +
         "</button>",
 
-      arrowRight: '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}">' +
+      arrowLeft: 
+       '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_left" title="{{NEXT}}">' +
         '<div><p>次ページ</p></div>' +
         "</button>",
 
@@ -918,8 +920,13 @@
         })
         .on("click.fb", "[data-fancybox-print]", function (e) {
           $("body").addClass("print");
+          var imgSrc = $(".fancybox-slide--current > .fancybox-content > img").attr("src");
+          $("#print").html(`<img src="${imgSrc}" />`);
+          $("#print").removeAttr("disabled");
           window.print();
+          $("#print").attr("disabled", "disabled");
           $("body").removeClass("print");
+
         });
 
       // Handle page scrolling and browser resizing
@@ -983,7 +990,7 @@
         }
 
         // Left arrow and Up arrow
-        if (keycode === 37 || keycode === 38) {
+        if (keycode === 39 || keycode === 38) {
           e.preventDefault();
 
           self.previous();
@@ -992,7 +999,7 @@
         }
 
         // Righ arrow and Down arrow
-        if (keycode === 39 || keycode === 40) {
+        if (keycode === 37 || keycode === 40) {
           e.preventDefault();
 
           self.next();
@@ -4163,20 +4170,20 @@
 
     // Sticky edges
     if (swiping == "x") {
-      if (
-        self.distanceX > 0 &&
-        (self.instance.group.length < 2 || (self.instance.current.index === 0 && !self.instance.current.opts.loop))
-      ) {
-        left = left + Math.pow(self.distanceX, 0.8);
-      } else if (
-        self.distanceX < 0 &&
-        (self.instance.group.length < 2 ||
-          (self.instance.current.index === self.instance.group.length - 1 && !self.instance.current.opts.loop))
-      ) {
-        left = left - Math.pow(-self.distanceX, 0.8);
-      } else {
-        left = left + self.distanceX;
-      }
+      // if (
+      //   self.distanceX > 0 &&
+      //   (self.instance.group.length < 2 || (self.instance.current.index === 0 && !self.instance.current.opts.loop))
+      // ) {
+      //   left = left + Math.pow(self.distanceX, 0.8);
+      // } else if (
+      //   self.distanceX < 0 &&
+      //   (self.instance.group.length < 2 ||
+      //     (self.instance.current.index === self.instance.group.length - 1 && !self.instance.current.opts.loop))
+      // ) {
+      //   left = left - Math.pow(-self.distanceX, 0.8);
+      // } else {
+      //   left = left + self.distanceX;
+      // }
     }
 
     self.sliderLastPos = {
@@ -4433,7 +4440,7 @@
       len = self.instance.group.length,
       distanceX = Math.abs(self.distanceX),
       canAdvance = swiping == "x" && len > 1 && ((self.dMs > 130 && distanceX > 10) || distanceX > 50),
-      speedX = 300;
+      speedX = 0;
 
     self.sliderLastPos = null;
 
@@ -4448,11 +4455,12 @@
         200
       );
       ret = self.instance.close(true, 250);
-    } else if (canAdvance && self.distanceX > 0) {
-      ret = self.instance.previous(speedX);
-    } else if (canAdvance && self.distanceX < 0) {
-      ret = self.instance.next(speedX);
-    }
+    } 
+    // else if (canAdvance && self.distanceX > 0) {
+    //   ret = self.instance.previous(speedX);
+    // } else if (canAdvance && self.distanceX < 0) {
+    //   ret = self.instance.next(speedX);
+    // }
 
     if (ret === false && (swiping == "x" || swiping == "y")) {
       self.instance.centerSlide(200);
