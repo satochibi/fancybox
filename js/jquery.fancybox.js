@@ -214,11 +214,13 @@
         "</button>",
 
       // Arrows
-      arrowLeft: '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
+      arrowRight:
+        '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_right" title="{{PREV}}">' +
         '<div><p>前ページ</p></div>' +
         "</button>",
 
-      arrowRight: '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}">' +
+      arrowLeft: 
+       '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_left" title="{{NEXT}}">' +
         '<div><p>次ページ</p></div>' +
         "</button>",
 
@@ -983,7 +985,7 @@
         }
 
         // Left arrow and Up arrow
-        if (keycode === 37 || keycode === 38) {
+        if (keycode === 39 || keycode === 38) {
           e.preventDefault();
 
           self.previous();
@@ -992,7 +994,7 @@
         }
 
         // Righ arrow and Down arrow
-        if (keycode === 39 || keycode === 40) {
+        if (keycode === 37 || keycode === 40) {
           e.preventDefault();
 
           self.next();

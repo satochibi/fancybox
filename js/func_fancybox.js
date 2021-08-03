@@ -1,6 +1,5 @@
 $(document).ready(function () {
 	$('[data-fancybox]').fancybox({
-		// オプションを下記に記載していきます
 		buttons: [
 			"print",
 			"zoom",
@@ -15,6 +14,10 @@ $(document).ready(function () {
 			autoStart: true,   // オープニングにサムネイルを表示する
 			hideOnClose: true,     // 閉じるアニメーションの際にサムネイルグリッドを非表示にする
 		},
+		transitionEffect: "fade",
+		transitionDuration: 0,
+		animationEffect: "fade",
+		animationDuration: 366,
 		hideScrollbar: false,
 		infobar: true,
 		protect: true,
