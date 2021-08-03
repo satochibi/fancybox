@@ -920,8 +920,13 @@
         })
         .on("click.fb", "[data-fancybox-print]", function (e) {
           $("body").addClass("print");
+          var imgSrc = $(".fancybox-slide--current > .fancybox-content > img").attr("src");
+          $("#print").html(`<img src="${imgSrc}" />`);
+          $("#print").removeAttr("disabled");
           window.print();
+          $("#print").attr("disabled", "disabled");
           $("body").removeClass("print");
+
         });
 
       // Handle page scrolling and browser resizing
