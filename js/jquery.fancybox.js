@@ -216,12 +216,12 @@
       // Arrows
       arrowRight:
         '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_right" title="{{PREV}}">' +
-        '<div><p>前ページ</p></div>' +
+        '<div><p style="margin: 0; padding: 0;">前ページ</p></div>' +
         "</button>",
 
       arrowLeft: 
        '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_left" title="{{NEXT}}">' +
-        '<div><p>次ページ</p></div>' +
+        '<div><p style="margin: 0; padding: 0;">次ページ</p></div>' +
         "</button>",
 
       // This small close button will be appended to your html/inline/ajax content by default,
@@ -921,7 +921,7 @@
         .on("click.fb", "[data-fancybox-print]", function (e) {
           $("body").addClass("print");
           var imgSrc = $(".fancybox-slide--current > .fancybox-content > img").attr("src");
-          $("#print").html(`<img src="${imgSrc}" />`);
+          $("#print").html('<img src="' + imgSrc + '" />');
           $("#print").removeAttr("disabled");
           window.print();
           $("#print").attr("disabled", "disabled");
