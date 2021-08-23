@@ -886,7 +886,7 @@ body.compensate-for-scrollbar {
     }
 
     .fancybox-show-thumbs .fancybox-inner {
-        right: 110px;
+        right: 0;
     }
 
     .fancybox-thumbs__list a {
